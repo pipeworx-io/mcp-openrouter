@@ -1,0 +1,66 @@
+[
+  {
+    "name": "list_models",
+    "description": "List LLMs from the OpenRouter catalog (~340 models across all major providers) with normalized $/1M-token pricing, context windows, and modality. Filter by search, free-only, minimum context, or modality (e.g. \"image\" for vision models). Sorted cheapest-first by completion price. Keyless.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "search": {
+          "type": "string",
+          "description": "Case-insensitive substring match against model id, name, and description. e.g. \"claude\", \"gpt-4o\", \"deepseek\"."
+        },
+        "free_only": {
+          "type": "boolean",
+          "description": "If true, only return models whose prompt price is $0 (free tier)."
+        },
+        "min_context": {
+          "type": "number",
+          "description": "Minimum context_length in tokens, e.g. 100000 or 200000."
+        },
+        "modality": {
+          "type": "string",
+          "description": "Substring match on architecture.modality, e.g. \"image\" to find vision/multimodal models, \"text->text\" for text-only."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Max models to return (default 25, max 60)."
+        }
+      }
+    }
+  },
+  {
+    "name": "get_model",
+    "description": "Get full details for one OpenRouter model by id — normalized $/1M pricing (prompt, completion, plus per-request/image/web-search costs), context window, modality, supported parameters, tokenizer, knowledge cutoff. e.g. id \"anthropic/claude-sonnet-4.5\". Keyless.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Exact model id, e.g. \"anthropic/claude-sonnet-4.5\", \"openai/gpt-4o\", \"google/gemini-2.5-pro\"."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  },
+  {
+    "name": "compare_models",
+    "description": "Side-by-side comparison of pricing ($/1M tokens), context window, and modality for 2-5 OpenRouter models. Answers \"is claude-sonnet-4.5 cheaper than gpt-4o\". Keyless.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of 2-5 exact model ids, e.g. [\"anthropic/claude-sonnet-4.5\", \"openai/gpt-4o\"]."
+        }
+      },
+      "required": [
+        "ids"
+      ]
+    }
+  }
+]
