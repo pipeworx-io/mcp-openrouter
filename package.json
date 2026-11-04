@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-openrouter",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "OpenRouter Models MCP.",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "openrouter",
     "gatewaySlug": "openrouter",
-    "sourceHash": "v1-b12bb8e8a9039bd4cde52f24ae92df70e2bc72fed4263426c0b1e4621a4d60bc",
-    "sourceCommit": "b2c4383545bb35171d0ada2beb1c9c7168ea175e"
+    "sourceHash": "v1-54db1ab58e77ec9e5133bca013cd261491223cf4e8ade9653de4438e917020ff",
+    "sourceCommit": "243a06a6ca2d3b6075325f3b66a1468d0a2eb603"
   }
 }
